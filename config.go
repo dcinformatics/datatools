@@ -2,6 +2,8 @@ package datatools
 
 import (
 	"io/ioutil"
+
+	"gopkg.in/yaml.v2"
 )
 
 // AppConfig holds the configuration from the loaded yaml file.
@@ -11,10 +13,12 @@ var AppConfig Config
 // It provides all configuration values for the application.
 type Config struct {
 	Settings struct {
-		Debug   bool   `yaml:"debug"`
-		Verbose bool   `yaml:"verbose"`
-		Output  string `yaml:"output"`
-		Logfile string `yaml:"logfile"`
+		Debug     bool   `yaml:"debug"`
+		Verbose   bool   `yaml:"verbose"`
+		FixedDate string `yaml:"fixedDate"`
+		Output    string `yaml:"outputDir"`
+		Input     string `yaml:"inputDir"`
+		Logfile   string `yaml:"logfile"`
 	} `yaml:"settings"`
 }
 

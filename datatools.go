@@ -74,11 +74,7 @@ func ExtractFile(file string) {
 
 		rc.Close()
 
-		if AppConfig.Settings.Output == "database" {
-			WriteQueueToDb(fileType)
-		} else {
-			WriteQueueToFile(fileType)
-		}
+		//TODO: Write Somewhere.
 
 		//panic("Development Stop in Content.go")
 	}

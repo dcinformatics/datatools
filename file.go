@@ -12,11 +12,11 @@ import (
 func GetInputFolder() string {
 	// 01/02 03:04:05PM '06 -0700
 
-	root := AppConfig.Source.Directory
+	root := AppConfig.Settings.Input
 	folder := time.Now().Format("2006-01-02")
 
-	if AppConfig.Source.FixedDate != "" {
-		folder = AppConfig.Source.FixedDate
+	if AppConfig.Settings.FixedDate != "" {
+		folder = AppConfig.Settings.FixedDate
 	}
 
 	if _, err := os.Stat(root); os.IsNotExist(err) {
@@ -35,11 +35,11 @@ func GetInputFolder() string {
 func GetOutputFolder() string {
 	// 01/02 03:04:05PM '06 -0700
 
-	root := AppConfig.Store.Directory
+	root := AppConfig.Settings.Output
 	folder := time.Now().Format("2006-01-02")
 
-	if AppConfig.Source.FixedDate != "" {
-		folder = AppConfig.Source.FixedDate
+	if AppConfig.Settings.FixedDate != "" {
+		folder = AppConfig.Settings.FixedDate
 	}
 
 	if _, err := os.Stat(root); os.IsNotExist(err) {

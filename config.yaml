@@ -1,0 +1,7 @@
+settings:
+  debug: true
+  verbose: false
+  fixedDate: "" #"2017-12-29"
+  outputDir: "Output"
+  inputDir: "Input"
+  logName: "log.html"
