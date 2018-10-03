@@ -2,6 +2,7 @@ package datatools
 
 import (
 	"encoding/csv"
+	"fmt"
 	"io"
 	"strings"
 )
@@ -15,6 +16,7 @@ func ReadCsv(content string, data string) {
 			break
 		}
 		Check(err)
+		DebugVerbose(fmt.Sprintf("%s", record))
 
 		switch content {
 		case "alpha":
