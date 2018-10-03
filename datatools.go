@@ -1,4 +1,4 @@
-package hcris
+package datatools
 
 import (
 	"archive/zip"

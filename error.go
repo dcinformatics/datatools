@@ -1,4 +1,4 @@
-package hcris
+package datatools
 
 import (
 	"fmt"
@@ -85,13 +85,13 @@ func checkErr(err error) {
 
 func exit(reason int) {
 	fmt.Printf("EXITING! (%d)", reason)
-	open.Start(GetDataFolder() + "/" + AppConfig.Settings.Logfile)
+	open.Start(GetInputFolder() + "/" + AppConfig.Settings.Logfile)
 	os.Exit(reason)
 }
 
 func WriteToLog(msg string) {
 	if AppConfig.Settings.Logfile != "" {
-		logFile := GetDataFolder() + "/" + AppConfig.Settings.Logfile
+		logFile := GetInputFolder() + "/" + AppConfig.Settings.Logfile
 
 		t := time.Now()
 		msg = fmt.Sprintf("[%s]: %s<br/>", t.Format(time.RFC1123), msg)
