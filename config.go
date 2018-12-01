@@ -20,6 +20,19 @@ type Config struct {
 		Input     string `yaml:"inputDir"`
 		Logfile   string `yaml:"logfile"`
 	} `yaml:"settings"`
+	Input struct {
+		Download bool   `yaml:"download"`
+		Url      string `yaml:"url"`
+		Path     string `yaml:"path"`
+		List     string `yaml:"list"`
+		TagAttr  string `yaml:"tagAttr"`
+		TagMatch string `yaml:"tagMatch"`
+	} `yaml:"source"`
+	Output struct {
+		Extract bool   `yaml:"extract"`
+		Prefix  string `yaml:"prefix"`
+		Ext     string `yaml:"ext"`
+	} `yaml:"store"`
 }
 
 // LoadConfig expects a file in yaml format.

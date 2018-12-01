@@ -5,3 +5,33 @@ settings:
   outputDir: "Output"
   inputDir: "Input"
   logName: "log.html"
+
+input:
+    # Whether to perform a download. true/false
+    download: false
+
+    # Root URL
+    url: "https://www.cms.gov"
+
+    # Path to page containing the Cost Reports by Fiscal Year List
+    path: "/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/Cost-Reports/Cost-Reports-by-Fiscal-Year.html"
+
+    # Look for all links associated with the Hospital Facility Type (Will be a pattern match on the source of the url)
+    list: "Cost-Reports-by-Fiscal-Year-Items/HOSP"
+
+    # This is the tag attribute to apple the tagMatch pattern to.
+    tagAttr: "href"
+
+    # This looks for tagAttr that have this type.
+    tagMatch: "zip"
+
+output:
+    # This will extract all contents of the zip files to the store.
+    extract: true
+
+    # When downloading, apply the prefix to file names.
+    prefix: ""
+
+    # This is the extension to force when saving files
+    ext: ".zip"
+
