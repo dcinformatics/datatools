@@ -9,6 +9,11 @@ import (
 	"time"
 )
 
+func MoveFile(fromFile string, toFile string) error {
+	Check(os.Rename(fromFile, toFile))
+	return nil
+}
+
 func GetInputFolder() string {
 	// 01/02 03:04:05PM '06 -0700
 
