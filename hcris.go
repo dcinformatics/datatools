@@ -156,7 +156,7 @@ func MoveHcrisCsvFile(fileName string) error {
 
 	fileComponents := strings.Split(fileName, "_")
 
-	fileType := fileComponents[2]
+	fileType := strings.Split(fileComponents[2], ".")[0]
 	fileYear := fileComponents[1]
 
 	if strings.Index(checkTypes, fileType) == -1 {
