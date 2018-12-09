@@ -170,16 +170,39 @@ func MoveHcrisCsvFile(fileName string) error {
 	}
 
 	fileSource := GetOutputFolder() + "/" + fileName
-	fileDest := GetOutputFolder() + "/" + fileType + "/" + fileYear + "/" + fileName
-
-	if _, err := os.Stat(GetOutputFolder() + "/" + fileType); os.IsNotExist(err) {
-		os.Mkdir(GetOutputFolder()+"/"+fileType, 0755)
-	}
-
-	if _, err := os.Stat(GetOutputFolder() + "/" + fileType + "/" + fileYear); os.IsNotExist(err) {
-		os.Mkdir(GetOutputFolder()+"/"+fileType+"/"+fileYear, 0755)
-	}
+	fileDest := GetHcrisOutputFolder(fileType, fileYear) + "/" + fileName
 
 	Check(MoveFile(fileSource, fileDest))
 	return nil
+}
+
+func GetHcrisOutputFolder(dirType string, dirYear string) string {
+	// 01/02 03:04:05PM '06 -0700
+
+	root := AppConfig.Settings.Output
+	folder := time.Now().Format("2006-01-02")
+
+	if AppConfig.Settings.FixedDate != "" {
+		folder = AppConfig.Settings.FixedDate
+	}
+
+	if _, err := os.Stat(root); os.IsNotExist(err) {
+		os.Mkdir(root, 0755)
+	}
+
+	if _, err := os.Stat(root + "/" + dirType); os.IsNotExist(err) {
+		os.Mkdir(root+"/"+dirType, 0755)
+	}
+
+	if _, err := os.Stat(root + "/" + dirType + "/" + folder); os.IsNotExist(err) {
+		os.Mkdir(root+"/"+dirType+"/"+folder, 0755)
+	}
+
+	if _, err := os.Stat(root + "/" + dirType + "/" + folder + "/" + dirYear); os.IsNotExist(err) {
+		os.Mkdir(root+"/"+dirType+"/"+folder+"/"+dirYear, 0755)
+	}
+
+	fmt.Sprintf("%d", "Store Folder: "+root+"/"+dirType+"/"+folder+"/"+dirYear)
+
+	return root + "/" + dirType + "/" + folder + "/" + dirYear
 }
